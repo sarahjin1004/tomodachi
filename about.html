@@ -133,23 +133,60 @@ License URI: http://www.themevault.net/license/-->
   </tbody>
 </table>
 <script language="javascript" type="text/javascript">
-function reqListener () {
-  console.log(this.responseText);
-  document.getElementById("mytab1").innerHTML = this.responseText.slice(1,1000)
+ str = ""
+//function reqListener () {
+//  console.log(this.responseText);
+//  document.getElementById("mytab1").innerHTML = this.responseText.slice(1,1000)
+//  str = this.responseText.slice(1,1000)
+//}
+//loadjson("https://cors.io/?http://animecons.com/events/map/ac-maps/map-upcoming.xml")
+//console.log(str);
+function xhrSuccess() {
+    this.callback.apply(this, this.arguments);
 }
-var oReq = new XMLHttpRequest();
-//oReq.addEventListener("load", reqListener);
-oReq.open("GET", "https://cors.io/?http://animecons.com/events/map/ac-maps/map-upcoming.xml");
-oReq.send();
-var str = ""
-oReq.onreadystatechange=function() {
-  if (this.readyState == 4 && this.status == 200){
-    console.log(oReq.responseText);
-    str += oReq.responseText.slice(1,5)
+
+function xhrError() {
+    console.error(this.statusText);
+}
+
+function loadFile(url, callback /*, opt_arg1, opt_arg2, ... */) {
+    var xhr = new XMLHttpRequest();
+    xhr.callback = callback;
+    xhr.arguments = Array.prototype.slice.call(arguments, 2);
+    xhr.onload = xhrSuccess;
+    xhr.onerror = xhrError;
+    xhr.open("GET", url, true);
+    xhr.send(null);
+}
+function showMessage(message) {
+    console.log(message + this.responseText);
+}
+
+loadFile("https://cors.io/?http://animecons.com/events/map/ac-maps/map-upcoming.xml", showMessage, "New message!\n\n");
+
+function loadjson(url){
+  var oReq = new XMLHttpRequest();
+  oReq.onreadystatechange=function() {
+    if (this.readyState == 4 && this.status == 200){
+      //alert(this.responseText);
+      //return JSON.parse(this.ResponseText);
+      console.log(this.responseText);
+      //var str = this.responseText;
+      //return str;
+      //document.write("<p>"+this.responseText+"</p>");
+    }
   }
+  //return oReq.responseText;
+  //oReq.addEventListener("load", reqListener);
+  oReq.open("GET", url);
+  oReq.send();
 }
+
+
+
 var myArray    = [1,2,3,4,5,6,7,8]
 var names = ["Mark", "Jacob", "Larry"]
+var names = [str, str, str]
 var last = ["Otto", "Thornton", "the Bird"]
 var handle = ["@mdo", "@fat", "@twitter"]
     var myTable= "<table class='table table-striped'>";
@@ -164,7 +201,7 @@ var handle = ["@mdo", "@fat", "@twitter"]
    myTable+="</table>";
 
  document.write(myTable);
- document.write(str);
+ document.write("<p>"+str+"</p>");
 
 //-->
 </script>
