@@ -101,6 +101,7 @@ License URI: http://www.themevault.net/license/-->
                 </div>
             </section>
             <div class="clearfix"></div>-->
+  <p id="mytab1">hi</p>
             <table class="table table-striped">
   <thead>
     <tr>
@@ -131,8 +132,44 @@ License URI: http://www.themevault.net/license/-->
     </tr>
   </tbody>
 </table>
+<script language="javascript" type="text/javascript">
+function reqListener () {
+  console.log(this.responseText);
+  document.getElementById("mytab1").innerHTML = this.responseText.slice(1,1000)
+}
+var oReq = new XMLHttpRequest();
+//oReq.addEventListener("load", reqListener);
+oReq.open("GET", "https://cors.io/?http://animecons.com/events/map/ac-maps/map-upcoming.xml");
+oReq.send();
+var str = ""
+oReq.onreadystatechange=function() {
+  if (this.readyState == 4 && this.status == 200){
+    console.log(oReq.responseText);
+    str += oReq.responseText.slice(1,5)
+  }
+}
+var myArray    = [1,2,3,4,5,6,7,8]
+var names = ["Mark", "Jacob", "Larry"]
+var last = ["Otto", "Thornton", "the Bird"]
+var handle = ["@mdo", "@fat", "@twitter"]
+    var myTable= "<table class='table table-striped'>";
+    myTable+= "<thead><tr><th scope='col'>#</th><th scope='col'>First</th><th scope='col'>Last</th><th scope='col'>Handle</th></tr></thead><tbody>";
+  for (var i=0; i<3; i++) {
+    myTable+="<tr><th scope='row'>"+ (i+1) + "</th>";
+    myTable+="<td>" + names[i] + "</td>";
+    myTable+="<td>" + last[i] + "</td>";
+    myTable+="<td>" + handle[i] + "</td>";
+  }
+  myTable+="</tr></tbody>";
+   myTable+="</table>";
 
+ document.write(myTable);
+ document.write(str);
 
+//-->
+</script>
+
+<!--
             <section class="about-block">
                 <div class="container">
                     <div class="row">
@@ -154,7 +191,7 @@ License URI: http://www.themevault.net/license/-->
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-            </section>
+            </section>-->
 
             <!---footer--->
             <footer>
