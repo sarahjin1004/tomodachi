@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSV to HTML table</title>
+  
+  
+  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700|Open+Sans:400,800);
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+textarea {
+	font-family: 'Inconsolata', monospace ;
+	width: 95%;
+	background-color: #eee;
+}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container" ng-app="myApp" ng-controller="Example">
+		<div class="container">
+				<div class="row">
+
+						<div class="col-md-12">
+								<textarea cols="30" rows="10" class="source">_lat;_lng;_name;_id;_dates;_loc;_status;_type;_urlname
+42.347505;-71.084638;Anime Boston 2025;10866;May 23-25, 2025;Boston, MA;Active;Anime;anime-boston-2025
+42.347505;-71.084638;Anime Boston 2024;10865;March 29-31, 2024;Boston, MA;Active;Anime;anime-boston-2024
+42.347505;-71.084638;Anime Boston 2023;10864;April 7-9, 2023;Boston, MA;Active;Anime;anime-boston-2023
+42.347505;-71.084638;Anime Boston 2022;9881;May 27-29, 2022;Boston, MA;Active;Anime;anime-boston-2022
+29.9495253;-90.0767019;MechaCon 2021;10318;July 23-25, 2021;New Orleans, LA;Active;Anime;mechacon-2021
+42.049631;-80.0842675;Hazard Con 2021;10862;July 23-25, 2021;Erie, PA;Active;Anime;hazard-con-2021
+42.347505;-71.084638;Anime Boston 2021;7331;April 2-4, 2021;Boston, MA;Active;Anime;anime-boston-2021
+39.6269434;-104.9016373;Colorado Anime Fest 2021;10933;March 19-21, 2021;Denver, CO;Active;Anime;colorado-anime-fest-2021
+34.065143;-117.606642;"Anim&eacute; Los Angeles 2021";9198;January 7-10, 2021;Ontario, CA;Active;Anime;anime-los-angeles-2021
+40.4962217;-74.4412218;DerpyCon 2020;11881;October 30 - November 1, 2020;New Brunswick, NJ;Active;Anime;derpycon-2020
+29.9495253;-90.0767019;MechaCon 2020;10317;July 24-26, 2020;New Orleans, LA;Active;Anime;mechacon-2020
+42.049631;-80.0842675;Hazard Con 2020;10861;July 24-26, 2020;Erie, PA;Active;Anime;hazard-con-2020
+30.4227514;-97.5912728;Okashicon 2020;11987;July 17-19, 2020;Pflugerville, TX;Active;Anime;okashicon-2020
+42.347505;-71.084638;Anime Boston 2020;5578;April 10-12, 2020;Boston, MA;Active;Anime;anime-boston-2020
+39.6269434;-104.9016373;Colorado Anime Fest 2020;10932;March 20-22, 2020;Denver, CO;Active;Anime;colorado-anime-fest-2020
+34.065143;-117.606642;"Anim&eacute; Los Angeles 2020";9199;January 9-12, 2020;Ontario, CA;Active;Anime;anime-los-angeles-2020
+35.629936;139.793944;Comic Market 2019;11369;December 28-31, 2019;Tokyo, Japan;Active;Comic;comic-market-2019
+40.757852;-74.0026158;Anime NYC 2019;11883;November 15-17, 2019;New York, NY;Active;Anime;anime-nyc-2019
+39.523286;-119.7792349;SNAFU Con 2019;11975;November 15-17, 2019;Reno, NV;Active;Anime;snafu-con-2019
+-27.476922;153.018501;Supanova Comic-Con & Gaming Expo - Brisbane 2019;11929;November 8-10, 2019;South Brisbane, Queensland, Australia;Active;Comic;supanova-comic-con-and-gaming-expo---brisbane-2019
+39.926296;-75.05368;Philcon 2019;12112;November 8-10, 2019;Cherry Hill, NJ;Active;SciFi;philcon-2019
+-34.945579;138.587932;Supanova Comic-Con & Gaming Expo - Adelaide 2019;11932;November 1-3, 2019;Wayville, South Australia, Australia;Active;Comic;supanova-comic-con-and-gaming-expo---adelaide-2019
+37.037211;-76.382854;NekoCon 2019;11967;November 1-3, 2019;Hampton, VA;Active;Anime;nekocon-2019
+38.9241993;-77.0551504;Anime USA 2019;12097;November 1-3, 2019;Washington, DC;Active;Anime;anime-usa-2019
+33.8842577;-84.465805;Anime Weekend Atlanta 2019;11941;October 31 - November 3, 2019;Atlanta, GA;Active;Anime;anime-weekend-atlanta-2019
+40.79976;-74.480862;DerpyCon 2019;10439;October 25-27, 2019;Morristown, NJ;Active;Anime;derpycon-2019
+40.0987877;-74.9973173;Shikkaricon 2019;11394;October 19-20, 2019;Philadelphia, PA;Active;Anime;shikkaricon-2019
+51.026827;3.691835;FACTS 2019;10213;October 19-20, 2019;Ghent, Belgium;Active;Comic;facts-2019
+44.5062198;-73.179309;Bakuretsu Con 2019;11791;October 18-20, 2019;Colchester, VT;Active;Anime;bakuretsu-con-2019
+46.8625402;-96.8342452;ValleyCon 2019;11919;October 18-21, 2019;Fargo, ND;Active;SciFi;valleycon-2019
+33.0286414;-96.9950017;Nomikai Dallas 2019;11760;October 12-13, 2019;Lewisville, TX;Active;Anime;nomikai-dallas-2019
+38.3560407;-81.6408715;Tsubasacon 2019;11757;October 11-13, 2019;Charleston, WV;Active;Anime;tsubasacon-2019
+-31.9565533;115.8520031;Madman Anime Festival Perth 2019;11786;October 5-6, 2019;Perth, Western Australia, Australia;Active;Anime;madman-anime-festival-perth-2019
+40.757164;-74.002029;New York Comic Con 2019;11974;October 3-6, 2019;New York, NY;Active;Comic;new-york-comic-con-2019
+40.7263902;-73.9521385;Puchi Con! 2019;11463;September 21, 2019;Brooklyn, NY;Active;Anime;puchi-con-2019
+32.4553094;-99.7337546;Anime Sekai 2019;11823;September 20-22, 2019;Abilene, TX;Active;Anime;anime-sekai-2019
+29.734311;-95.550292;Delta H Con 2019;12087;September 20-22, 2019;Houston, TX;Active;Anime;delta-h-con-2019
+-37.825562;144.9539333;Madman Anime Festival Melbourne 2019;11784;September 14-15, 2019;South Wharf, Victoria, Australia;Active;Anime;madman-anime-festival-melbourne-2019
+40.7988044;-73.5022782;Sy-Con 2019;11354;September 13-14, 2019;Syosset, NY;Active;Comic;sy-con-2019
+45.5283117;-122.6631628;Rose City Comic Con 2019;11742;September 13-15, 2019;Portland, OR;Active;Comic;rose-city-comic-con-2019
+46.8625238;-96.8340639;Anime Fargo 2019;11882;September 13-15, 2019;Fargo, ND;Active;Anime;anime-fargo-2019
+29.421484;-98.486348;San Japan 2019;11311;August 30 - September 1, 2019;San Antonio, TX;Active;Anime;san-japan-2019
+37.3291616;-121.8887022;Crunchyroll Expo 2019;11741;August 30 - September 1, 2019;San Jose, CA;Active;Anime;crunchyroll-expo-2019
+33.761497;-84.385117;Dragon Con 2019;11436;August 29 - September 2, 2019;Atlanta, GA;Active;SciFi;dragon-con-2019
+30.67809;-88.1296446;A.g.S Con 2019;11462;August 24-25, 2019;Mobile, AL;Active;Anime;a-g-s-con-2019
+51.4671713;-112.7060856;Drumheller Dinosaur & Comic Expo 2019;11682;August 24-25, 2019;Drumheller, AB, Canada;Active;Other;drumheller-dinosaur-and-comic-expo-2019
+35.6471535;140.0338983;C3AFA Tokyo 2019;12129;August 24-25, 2019;Chiba, Japan;Active;Anime;c3afa-tokyo-2019
+39.741815;-104.989868;Nan Desu Kan 2019;11940;August 23-25, 2019;Denver, CO;Active;Anime;nan-desu-kan-2019
+43.643777;-79.386982;FanExpo Canada 2019;11943;August 22-25, 2019;Toronto, ON, Canada;Active;Comic;fanexpo-canada-2019
+39.9701097;-83.0007819;Matsuricon 2019;11426;August 16-18, 2019;Columbus, OH;Active;Anime;matsuricon-2019
+45.504847;-73.559958;Otakuthon 2019;11686;August 16-18, 2019;"Montr&eacute;al, QC, Canada";Active;Anime;otakuthon-2019
+32.7850887;-96.7947944;AnimeFest 2019;11966;August 16-19, 2019;Dallas, TX;Active;Anime;animefest-2019
+30.323927;-97.7046619;Anime Austin 2019;12110;August 16-18, 2019;Austin, TX;Active;Anime;anime-austin-2019
+53.39548;-2.9903124;SunnyCon Anime Expo Liverpool 2019;10741;August 10-11, 2019;Liverpool, UK;Active;Anime;sunnycon-anime-expo-liverpool-2019
+35.629936;139.793944;Comic Market 2019;11368;August 9-12, 2019;Tokyo, Japan;Active;Comic;comic-market-2019
+53.5414035;-113.4861407;Animethon 2019;11638;August 9-11, 2019;Edmonton, AB, Canada;Active;Anime;animethon-2019
+35.2168846;-80.8386865;Queen City Anime Convention 2019;11681;August 9-11, 2019;Charlotte, NC;Active;Anime;queen-city-anime-convention-2019
+49.28911;-123.116055;Anirevo Summer 2019;11781;August 9-11, 2019;Vancouver, BC, Canada;Active;Anime;anirevo-summer-2019
+28.4485166;-81.4682508;Anime Festival Orlando 2019;11813;August 9-11, 2019;Orlando, FL;Active;Anime;anime-festival-orlando-2019
+41.5220508;-90.5722774;Anime-zing! 2019;11298;August 2-4, 2019;Davenport, IL;Active;Anime;anime-zing-2019
+34.0809221;-117.7652561;Animanga 2019;11739;August 2-4, 2019;Pomona, CA;Active;Anime;animanga-2019
+41.0729082;-75.7116202;SaikouCon 2019;11910;August 2-4, 2019;White Haven, PA;Active;Anime;saikoucon-2019
+49.4852373;8.4769969;AnimagiC 2019;12098;August 2-4, 2019;Mannheim, Germany;Active;Anime;animagic-2019
+41.4010808;-72.8514219;Lock City Anime & Comic Con 2019;11964;July 27, 2019;North Haven, CT;Active;Anime;lock-city-anime-and-comic-con-2019
+29.9495253;-90.0767019;MechaCon 2019;10316;July 26-28, 2019;New Orleans, LA;Active;Anime;mechacon-2019
+42.049631;-80.0842675;Hazard Con 2019;10860;July 26-28, 2019;Erie, PA;Active;Anime;hazard-con-2019
+38.9035868;-77.0231609;Otakon 2019;11372;July 26-28, 2019;Washington, DC;Active;Anime;otakon-2019
+43.063839;-86.226028;Kogan Con 2019;11809;July 20, 2019;Grand Haven, MI;Active;Anime;kogan-con-2019
+30.4227584;-97.5912872;Okashicon 2019;11130;July 19-21, 2019;Pflugerville, TX;Active;Anime;okashicon-2019
+46.5887774;-111.9985413;OokiiSoraCon 2019;11918;July 19-21, 2019;Helena, MT;Active;Anime;ookiisoracon-2019
+52.1276914;-106.667306;Ganbatte 2019;11634;July 13-14, 2019;Saskatoon, SK, Canada;Active;Anime;ganbatte-2019
+40.743937;-73.646175;MinCon 2019;11979;July 13, 2019;Mineola, NY;Active;Comic;mincon-2019
+38.8487475;-77.0517224;Blerdcon 2019;11378;July 12-14, 2019;Arlington, VA;Active;Comic;blerdcon-2019
+41.5920492;-93.6225749;AnimeIowa 2019;11725;July 12-14, 2019;Des Moines, IA;Active;Anime;animeiowa-2019
+42.2922244;-85.5840183;Dokidokon 2019;11937;July 12-14, 2019;Kalamazoo, MI;Active;Anime;dokidokon-2019
+41.763438;-72.668338;ConnectiCon 2019;11727;July 11-14, 2019;Hartford, CT;Active;Other;connecticon-2019
+49.2756442;-123.1098993;Geektopia 2019;11780;July 6, 2019;Vancouver, BC, Canada;Active;Comic;geektopia-2019
+41.9806409;-87.8599685;Anime Midwest 2019;11297;July 5-7, 2019;Rosemont, IL;Active;Anime;anime-midwest-2019
+45.5049286;-73.5600211;Montreal Comiccon 2019;11472;July 5-7, 2019;Montreal, QC, Canada;Active;Comic;montreal-comiccon-2019
+-34.920783;138.5946;AVCon 2019;12099;July 5-7, 2019;Adelaide, South Australia, Australia;Active;Anime;avcon-2019
+25.7948964;-80.1334193;Florida Supercon 2019;12040;July 4-7, 2019;Miami Beach, FL;Active;Comic;florida-supercon-2019
+34.041209;-118.269131;Anime Expo 2019;11211;July 3-7, 2019;Los Angeles, CA;Active;Anime;anime-expo-2019
+54.9754821;-1.6217787;SunnyCon Anime Expo Newcastle 2019;11381;June 28-30, 2019;Newcastle, UK;Active;Anime;sunnycon-anime-expo-newcastle-2019
+37.6828248;-97.3414731;Anime Festival Wichita 2019;11470;June 28-30, 2019;Wichita, KS;Active;Anime;anime-festival-wichita-2019
+-31.956859;115.852804;Supanova Comic-Con & Gaming Expo - Perth 2019;11930;June 28-30, 2019;Perth, Western Australia, Australia;Active;Comic;supanova-comic-con-and-gaming-expo---perth-2019
+45.9602897;-66.6386852;Animaritime 2019;11972;June 28-30, 2019;Fredericton, NB, Canada;Active;Anime;animaritime-2019
+43.635096;-70.3384;PortConMaine 2019;11166;June 27-30, 2019;South Portland, ME;Active;Anime;portconmaine-2019
+-33.8452582;151.0683661;Supanova Comic-Con & Gaming Expo - Sydney 2019;11933;June 21-23, 2019;Sydney, New South Wales, Australia;Active;Comic;supanova-comic-con-and-gaming-expo---sydney-2019
+51.8828386;4.4881046;AnimeCon 2019;11939;June 14-16, 2019;Rotterdam, Netherlands;Active;Anime;animecon-2019
+44.5036488;-80.3112253;YetiCon 2019;11988;June 14-16, 2019;The Blue Mountains, ON, Canada;Active;Anime;yeticon-2019
+29.7520662;-95.3579896;Anime Matsuri 2019;11380;June 13-16, 2019;Houston, TX;Active;Anime;anime-matsuri-2019
+51.258981;6.745702;DoKomi 2019;11434;June 8-9, 2019;"D&uuml;sseldorf, Germany";Active;Anime;dokomi-2019
+53.4078536;-2.9821679;Liverpool Anime & Gaming Con 2019;11915;June 8-9, 2019;Liverpool, UK;Active;Anime;liverpool-anime-and-gaming-con-2019
+38.5784382;-121.4886142;SacAnime 2019;11103;June 7-9, 2019;Sacramento, CA;Active;Anime;sacanime-2019
+39.36377;-74.4402304;AnimeNEXT 2019;11390;June 7-9, 2019;Atlantic City, NJ;Active;Anime;animenext-2019
+30.4373069;-90.084686;Sawa Con 2019;11597;June 7-8, 2019;Covington, LA;Active;Anime;sawa-con-2019
+39.7643569;-86.1643473;Indy PopCon 2019;11752;June 7-9, 2019;Indianapolis, IN;Active;Comic;indy-popcon-2019
+42.9675206;-85.6730532;JAFAX 2019;11811;June 7-9, 2019;Grand Rapids, MI;Active;Anime;jafax-2019
+37.7756785;-87.116924;OMG!Con 2019;12079;June 7-9, 2019;Owensboro, KY;Active;Anime;omgcon-2019
+32.7496461;-97.3282767;A-Kon 2019;11683;June 6-9, 2019;Fort Worth, TX;Active;Anime;a-kon-2019
+41.38444;-82.6421;Colossalcon 2019;11740;May 30 - June 2, 2019;Sandusky, OH;Active;Anime;colossalcon-2019
+42.3110534;-88.0204757;County Pop Con 2019;11067;May 25, 2019;Grayslake, IL;Active;Comic;county-pop-con-2019
+-27.4762316;153.0181423;Madman Anime Festival Brisbane 2019;11785;May 25-26, 2019;South Brisbane, Queensland, Australia;Active;Anime;madman-anime-festival-brisbane-2019
+42.3467506;-83.4923124;Anime Park 2019;11936;May 25, 2019;Canton, MI;Active;Anime;anime-park-2019
+37.329065;-121.888858;FanimeCon 2019;11176;May 24-27, 2019;San Jose, CA;Active;Anime;fanimecon-2019
+43.6918892;-79.5784143;Anime North 2019;11735;May 24-26, 2019;Toronto, ON, Canada;Active;Anime;anime-north-2019
+43.6145341;-116.2045818;Anime Oasis 2019;11878;May 24-27, 2019;Boise, ID;Active;Anime;anime-oasis-2019
+40.1237867;-75.4582427;Thy Geekdom Con 2019;12123;May 24-26, 2019;Oaks, PA;Active;Comic;thy-geekdom-con-2019
+33.7598766;-84.397002;MomoCon 2019;11112;May 23-26, 2019;Atlanta, GA;Active;Anime;momocon-2019
+35.773709;-78.6414988;Animazement 2019;11365;May 23-26, 2019;Raleigh, NC;Active;Anime;animazement-2019
+53.3999159;-1.4200183;Yorkshire Cosplay Con 2019;11286;May 18-19, 2019;Sheffield, UK;Active;Costume;yorkshire-cosplay-con-2019
+41.980673;-87.859903;Anime Central 2019;11342;May 17-19, 2019;Rosemont, IL;Active;Anime;anime-central-2019
+51.0450677;-114.0617111;Otafest 2019;11423;May 17-19, 2019;Calgary, AB, Canada;Active;Anime;otafest-2019
+35.16792;-106.5888318;Sabaku Con 2019;11917;May 10-12, 2019;Albuquerque, NM;Active;Anime;sabaku-con-2019
+55.8643804;-4.2520428;Rai Con Spring 2019;11976;May 4, 2019;Glasgow, UK;Active;Anime;rai-con-spring-2019
+29.4929457;-98.5512747;Mini-Mini Con 2019;12125;May 4, 2019;San Antonio, TX;Active;Anime;mini-mini-con-2019
+32.7743399;-96.8005948;Fan Expo Dallas 2019;10801;May 3-5, 2019;Dallas, TX;Active;Comic;fan-expo-dallas-2019
+38.7692524;-90.502502;Anime St. Louis 2019;11821;May 3-5, 2019;St. Charles, MO;Active;Anime;anime-st--louis-2019
+40.7880074;-74.0425442;Castle Point Anime Convention 2019;11873;April 27-28, 2019;Secaucus, NJ;Active;Anime;castle-point-anime-convention-2019
+51.4581321;-2.5837625;Bristol Anime & Gaming Con 2019;11914;April 27-28, 2019;Bristol, UK;Active;Anime;bristol-anime-and-gaming-con-2019
+40.8593232;-82.2687449;Gojotekicon 2019;11066;April 26-28, 2019;Ashland, OH;Active;Anime;gojotekicon-2019
+36.1317989;-115.1517212;Lvl Up Expo 2019;11773;April 26-28, 2019;Las Vegas, NV;Active;VGames;lvl-up-expo-2019
+42.4747384;-83.2492643;LTU Expo 2019;11891;April 20, 2019;Southfield, MI;Active;Anime;ltu-expo-2019
+41.935731;-88.766431;Karoshi-Con 2019;12108;April 20, 2019;DeKalb, IL;Active;Anime;karoshi-con-2019
+42.347505;-71.084638;Anime Boston 2019;5443;April 19-21, 2019;Boston, MA;Active;Anime;anime-boston-2019
+39.6269434;-104.9016373;Colorado Anime Fest 2019;10931;April 19-21, 2019;Denver, CO;Active;Anime;colorado-anime-fest-2019
+47.611783;-122.331165;Sakura-Con 2019;11222;April 19-21, 2019;Seattle, WA;Active;Anime;sakura-con-2019
+43.643763;-79.3868154;International Fan Festival Toronto 2019;11600;April 19-21, 2019;Toronto, ON, Canada;Active;Anime;international-fan-festival-toronto-2019
+36.144564;-86.682789;Middle Tennessee Anime Convention 2019;12106;April 19-21, 2019;Nashville, TN;Active;Anime;middle-tennessee-anime-convention-2019
+30.4231136;-91.1343409;LouisiANIME 2019;12109;April 19-21, 2019;Baton Rouge, LA;Active;Anime;louisianime-2019
+30.8193846;-83.3105174;Tiger Con 2019;11180;April 13-14, 2019;Valdosta, GA;Active;Anime;tiger-con-2019
+46.5596488;-87.4065562;Superior Con 2019;11346;April 13, 2019;Marquette, MI;Active;Comic;superior-con-2019
+40.5048365;-74.366638;Kogaracon 2019;11805;April 13, 2019;Edison, NJ;Active;Anime;kogaracon-2019
+38.0053588;-121.8162048;ASAHiCon 2019;11834;April 13, 2019;Antioch, CA;Active;Anime;asahicon-2019
+53.4711285;-2.2365001;Manchester Anime & Gaming Con 2019;11916;April 13-14, 2019;Manchester, UK;Active;Anime;manchester-anime-and-gaming-con-2019
+-41.273573;174.785914;Armageddon Wellington 2019;11970;April 13-15, 2019;Wellington, New Zealand;Active;SciFi;armageddon-wellington-2019
+32.6672023;-97.2895638;South Campus Anime Convention 2019;11640;April 12-13, 2019;Fort Worth, TX;Active;Anime;south-campus-anime-convention-2019
+-28.028321;153.428766;Supanova Comic-Con & Gaming Expo - Gold Coast 2019;11931;April 12-14, 2019;Broadbeach, Queensland, Australia;Active;Comic;supanova-comic-con-and-gaming-expo---gold-coast-2019
+40.4457778;-79.9964296;Tekko 2019;11604;April 11-14, 2019;Pittsburgh, PA;Active;Anime;tekko-2019
+51.026827;3.691835;FACTS 2019;10214;April 6-7, 2019;Ghent, Belgium;Active;Comic;facts-2019
+29.506121;-98.5476478;Mizuumi-Con 2019;11302;April 6, 2019;San Antonio, TX;Active;Anime;mizuumi-con-2019
+21.289819;-157.836113;Kawaii Kon 2019;2742;April 5-7, 2019;Honolulu, HI, New Zealand;Active;Anime;kawaii-kon-2019
+33.997369;-81.038096;NashiCon 2019;11089;April 5-7, 2019;Columbia, SC;Active;Anime;nashicon-2019
+-37.782121;144.911728;Supanova Comic-Con & Gaming Expo - Melbourne 2019;11875;April 5-7, 2019;Melbourne, Victoria, Australia;Active;Comic;supanova-comic-con-and-gaming-expo---melbourne-2019
+34.7142323;-92.2221184;AnimeCon Arkansas 2019;11880;April 5-7, 2019;Little Rock, AR;Active;Anime;animecon-arkansas-2019
+41.3771181;-83.640716;Animarathon 2019;11077;March 30-31, 2019;Bowling Green, OH;Active;Anime;animarathon-2019
+32.0076168;-81.096907;Savannah Animazing Con 2019;12116;March 30-31, 2019;Savannah, GA;Active;Anime;savannah-animazing-con-2019
+44.9708443;-93.2782142;Anime Detour 2019;11965;March 29-31, 2019;Minneapolis, MN;Active;Anime;anime-detour-2019
+33.6087717;-112.1609385;Dev Fare 2019;11247;March 23, 2019;Glendale, AZ;Active;VGames;dev-fare-2019
+33.8394182;-118.3439529;AniFest 2019;11895;March 23, 2019;Torrance, CA;Active;Anime;anifest-2019
+42.967148;-71.434329;Queen City Kamikaze 2019;11962;March 23, 2019;Manchester, NH;Active;Anime;queen-city-kamikaze-2019
+30.6356551;-96.3269602;AggieCon 2019;10527;March 22-24, 2019;College Station, TX;Active;SciFi;aggiecon-2019
+38.0436309;-87.5406747;EvilleCon 2019;10852;March 22-24, 2019;Evansville, IN;Active;Anime;evillecon-2019
+40.0369749;-76.3049266;Zenkaikon 2019;11221;March 22-24, 2019;Lancaster, PA;Active;Anime;zenkaikon-2019
+42.7339945;-84.5512317;Shuto Con 2019;11687;March 22-24, 2019;Lansing, MI;Active;Anime;shuto-con-2019
+39.0997238;-84.2750923;Animatic Con 2019;11977;March 22-24, 2019;Cincinnati, OH;Active;Anime;animatic-con-2019
+31.7864353;35.202418;Harucon 2019;11799;March 21, 2019;Jerusalem, Israel;Active;Anime;harucon-2019
+28.4481525;-81.4680694;My-Con 2019;11156;March 16, 2019;Orlando, FL;Active;Anime;my-con-2019
+29.646399;-82.3478683;SwampCon 2019;11626;March 16-17, 2019;Gainesville, FL;Active;Anime;swampcon-2019
+-33.8735468;151.1989692;Madman Anime Festival Sydney 2019;11787;March 16-17, 2019;Sidney, New South Wales, Australia;Active;Anime;madman-anime-festival-sydney-2019
+36.7321976;-119.7507195;Ani-Me Con 2019;12001;March 16-17, 2019;Fresno, CA;Active;Anime;ani-me-con-2019
+28.4449203;-81.3955514;Omni Fandom Expo 2019;11127;March 15-17, 2019;Orlando, FL;Active;SciFi;omni-fandom-expo-2019
+37.063728;-76.493686;Kigacon 2019;11303;March 15-17, 2019;Newport News, VA;Active;Anime;kigacon-2019
+38.9285373;-94.6552475;Naka-Kon 2019;11428;March 15-17, 2019;Overland Park, KS;Active;Anime;naka-kon-2019
+36.1003868;-80.2479487;Triad Anime Con 2019;11736;March 15-17, 2019;Winston-Salem, NC;Active;Anime;triad-anime-con-2019
+41.6019326;-93.6569764;Anime Recharge 2019;12061;March 10, 2019;Des Moines, IA;Active;Anime;anime-recharge-2019
+43.7439176;7.4317337;Monaco Anime Game International Conferences 2019;10911;March 9, 2019;Monaco;Active;Anime;monaco-anime-game-international-conferences-2019
+32.3019637;-90.1705929;Mississippi Anime Festival 2019;11542;March 9, 2019;Jackson, MS;Active;Anime;mississippi-anime-festival-2019
+50.905675;-1.415289;Minami Con 2019;11383;March 8-10, 2019;Southampton, UK;Active;Anime;minami-con-2019
+35.2083598;-101.8305303;Con-Munnity Festival 2019;12121;March 8-10, 2019;Amarillo, TX;Active;Anime;con-munnity-festival-2019
+33.5282151;-81.7209171;AgamaCon 2019;11079;March 2-3, 2019;Aiken, SC;Active;Anime;agamacon-2019
+45.8739629;-72.5053158;RubikCon 2019;11385;March 2-3, 2019;Drummondville, QC, Canada;Active;VGames;rubikcon-2019
+41.0756638;-81.5125218;Zipcon 2019;10622;February 23, 2019;Akron, OH;Active;Anime;zipcon-2019
+49.8892063;-97.1448233;Ai-Kon Winterfest 2019;11362;February 23, 2019;Winnipeg, MB, Canada;Active;Anime;ai-kon-winterfest-2019
+33.4499827;-112.0657441;Arizona Matsuri 2019;12043;February 23-24, 2019;Phoenix, AZ;Active;Other;arizona-matsuri-2019
+40.150029;-76.59079;Jaycon 2019;12052;February 23-24, 2019;Elizabethtown, PA;Active;Anime;jaycon-2019
+45.0002231;-123.0251879;MiyakoCon 2019;12126;February 23-24, 2019;Keizer, OR;Active;Anime;miyakocon-2019
+33.525055;-86.811873;Kami-Con 2019;11850;February 22-24, 2019;Birmingham, AL;Active;Anime;kami-con-2019
+42.729188;-73.679273;Genericon 2019;11942;February 22-24, 2019;Troy, NY;Active;SciFi;genericon-2019
+30.4163661;-87.2089644;Pensacon 2019;12045;February 22-24, 2019;Pensacola, FL;Active;Comic;pensacon-2019
+35.0420986;-85.31273;Con Nooga 2019;12051;February 22-24, 2019;Chattanooga, TN;Active;Anime;con-nooga-2019
+22.2832965;114.1730514;C3AFA Hong Kong 2019;12128;February 22-24, 2019;Wan Chai, Hong Kong;Active;Anime;c3afa-hong-kong-2019
+48.8320933;2.285398;Paris Manga & Sci-Fi Show 2019;11892;February 16-17, 2019;Paris, France;Active;Anime;paris-manga-and-sci-fi-show-2019
+43.040105;-87.916433;Anime Milwaukee 2019;10416;February 15-17, 2019;Milwaukee, WI;Active;Anime;anime-milwaukee-2019
+25.7798722;-80.1777518;NotCon at Sea 2019;10506;February 15-18, 2019;Departing from Miami, FL;Active;Other;notcon-at-sea-2019
+38.7814151;-77.0170189;Katsucon 2019;11113;February 15-17, 2019;National Harbor, MD;Active;Anime;katsucon-2019
+30.5193544;-97.6873439;Ushicon 2019;11631;February 15-17, 2019;Round Rock, TX;Active;Anime;ushicon-2019
+60.994871;25.651402;Desucon Frostbite 2019;11812;February 15-17, 2019;Lahti, Finland;Active;Anime;desucon-frostbite-2019
+51.551727;-0.110394;London Anime & Gaming Con 2019;11913;February 15-17, 2019;London, UK;Active;Anime;london-anime-and-gaming-con-2019
+32.8797541;-117.2361966;Animefest 2019;12062;February 10, 2019;La Jolla, CA;Active;Anime;animefest-2019
+50.4141125;-4.125564;Animangapop 2019;11629;February 9-10, 2019;Plymouth, UK;Active;Anime;animangapop-2019
+41.788089;-87.595558;Uchi-con 2019;11724;February 9, 2019;Chicago, IL;Active;Anime;uchi-con-2019
+36.8683299;-94.3692989;ArtCon 2019;11763;February 9, 2019;Neosho, MO;Active;Comic;artcon-2019
+31.5650683;-110.2466681;Cochise College Comic Con 2019;11822;February 9-10, 2019;Sierra Vista, AZ;Active;Comic;cochise-college-comic-con-2019
+47.073125;-122.977449;Chibi Chibi Con 2019;12032;February 9, 2019;Olympia, WA;Active;Anime;chibi-chibi-con-2019
+43.5260325;-80.2245738;GenreCon 2019;12047;February 9-10, 2019;Guelph, ON, Canada;Active;SciFi;genrecon-2019
+39.728445;-86.258495;Anime Crossroads 2019;10625;February 8-10, 2019;Indianapolis, IN;Active;Anime;anime-crossroads-2019
+33.7615894;-84.3851814;Seishun Con 2019;11073;February 8-10, 2019;Atlanta, GA;Active;Anime;seishun-con-2019
+41.2276947;-96.0221187;Kanpai!Con 2019;11269;February 8-10, 2019;Omaha, NE;Active;Anime;kanpaicon-2019
+36.886434;-76.306894;ODUCon 2019;11948;February 8-10, 2019;Norfolk, VA;Active;Anime;oducon-2019
+35.3426255;-119.0111843;Bak-Anime 2019;11636;February 2-3, 2019;Bakersfield, CA;Active;Anime;bak-anime-2019
+51.4836788;-3.1672278;Cardiff Anime & Gaming Con 2019;11849;February 2-3, 2019;Cardiff, UK;Active;Anime;cardiff-anime-and-gaming-con-2019
+-33.4321835;-70.6546606;Anime Expo Santiago 2019;11852;February 2-3, 2019;Santiago, Chile;Active;Anime;anime-expo-santiago-2019
+38.8335938;-104.8267082;GalaxyFest 2019;11078;February 1-3, 2019;Colorado Springs, CO;Active;SciFi;galaxyfest-2019
+37.3103824;-79.9796899;Star City Anime 2019;11606;February 1-3, 2019;Roanoke, VA;Active;Anime;star-city-anime-2019
+40.4575636;-78.4010625;Setsucon 2019;10813;January 26-27, 2019;Altoona, PA;Active;Anime;setsucon-2019
+27.3419052;-82.5430936;SSA+S Toracon 2019;11475;January 26, 2019;Sarasota, FL;Active;Anime;ssa-s-toracon-2019
+27.5717311;-99.435589;STCE's Comic Con 2019;11775;January 26-27, 2019;Laredo, TX;Active;Comic;stces-comic-con-2019
+35.9196795;-84.0901529;Knoxville Anime Day 2019;11950;January 26, 2019;Knoxville, TN;Active;Anime;knoxville-anime-day-2019
+31.7149079;-96.1413652;Iigurubando Con 2019;12012;January 26, 2019;Fairfield, TX;Active;Anime;iigurubando-con-2019
+28.4084236;-80.6116328;Colossalcon Cruise 2019;10795;January 25-28, 2019;Departing from Cape Canaveral, FL;Active;Anime;colossalcon-cruise-2019
+33.5879484;-101.8542016;Anime WTX 2019;11792;January 25-27, 2019;Lubbock, TX;Active;Anime;anime-wtx-2019
+34.081186;-117.7638028;Anime Impulse 2019;10246;January 19-20, 2019;Pomona, CA;Active;Anime;anime-impulse-2019
+43.7264626;-79.3349541;Anime Shogatsu 2019;11795;January 19, 2019;North York, ON, Canada;Active;Anime;anime-shogatsu-2019
+42.241366;-83.616797;Washi Con 2019;11796;January 19, 2019;Ypsilanti, MI;Active;Anime;washi-con-2019
+34.9270318;-89.9963848;ABC Winterfest Remix 2019;11877;January 19, 2019;Southaven, MS;Active;Anime;abc-winterfest-remix-2019
+45.426686;-75.715102;G-Anime Winter 2019;11722;January 18-20, 2019;Gatineau, QC, Canada;Active;Anime;g-anime-winter-2019
+53.2776488;-9.0591139;Akumakon 2019;11838;January 18-20, 2019;Galway, Ireland;Active;Anime;akumakon-2019
+30.2199094;-81.565138;Jacksonville Anime Day 2019;12048;January 13, 2019;Jacksonville, FL;Active;Anime;jacksonville-anime-day-2019
+53.5222763;-113.6281144;Animini 2019;11723;January 12-13, 2019;Edmonton, AB, Canada;Active;Anime;animini-2019
+39.972631;-83.001065;Ohayocon 2019;10775;January 11-13, 2019;Columbus, OH;Active;Anime;ohayocon-2019
+39.780818;-75.121239;KotoriCon 2019;11076;January 11-12, 2019;Sewell, NJ;Active;Anime;kotoricon-2019
+39.2850306;-76.6141329;AniMore 2019;11605;January 11-13, 2019;Baltimore, MD;Active;Anime;animore-2019
+37.9779516;-87.509256;Anime, Toys, and Collectibles Show 2019;11762;January 11-12, 2019;Evansville, IN;Active;Toys;anime-toys-and-collectibles-show-2019
+33.418699;-111.829802;Taiyou Con 2019;11794;January 11-13, 2019;Mesa, AZ;Active;Anime;taiyou-con-2019
+34.065143;-117.606642;"Anim&eacute; Los Angeles 2019";9197;January 10-13, 2019;Ontario, CA;Active;Anime;anime-los-angeles-2019
+35.365221;-80.70061;Ichibancon 2019;11280;January 10-13, 2019;Concord, NC;Active;Anime;ichibancon-2019
+45.5830065;-122.575141;Fandom PDX 2019;11147;January 5-6, 2019;Portland, OR;Active;Comic;fandom-pdx-2019
+52.597881;13.3522646;Anime Flea Market 2019;11754;January 5, 2019;Berlin, Germany;Active;Anime;anime-flea-market-2019
+32.8108519;-117.1486778;Cos-Losseum Cosplay Con San Diego 2019;11770;January 5, 2019;San Diego, CA;Active;Costume;cos-losseum-cosplay-con-san-diego-2019
+47.4929999;19.1269999;"T&eacute;li MondoCon 2019";11949;January 5, 2019;Budapest, Hungary;Active;Anime;teli-mondocon-2019
+40.6834904;-89.5905026;Anime-Zap! 2019;10248;January 4-6, 2019;East Peoria, IL;Active;Anime;anime-zap-2019
+38.5784382;-121.4886142;SacAnime 2019;11102;January 4-6, 2019;Sacramento, CA;Active;Anime;sacanime-2019
+47.4354514;-122.2941131;Aki Con 2019;11107;January 4-6, 2019;Seattle, WA;Active;Anime;aki-con-2019
+35.629936;139.793944;Comic Market 2018;11370;December 29-31, 2018;Tokyo, Japan;Active;Comic;comic-market-2018
+27.9416932;-82.3323875;Tampa Anime Day 2018;11588;December 29, 2018;Tampa, FL;Active;Anime;tampa-anime-day-2018
+41.0764121;-85.1405189;PopCon Fort Wayne 2018;11751;December 29-30, 2018;Fort Wayne, IN;Active;Comic;popcon-fort-wayne-2018
+30.391682;-97.749623;Ikkicon 2018;11272;December 28-30, 2018;Austin, TX;Active;Anime;ikkicon-2018
+22.3240023;114.203937;Rainbow Gala 2018;11871;December 23, 2018;Kowloon Bay, Hong Kong;Active;Anime;rainbow-gala-2018
+3.1541737;101.7128097;Comic Fiesta 2018;11863;December 22-23, 2018;Kuala Lumpur, Malaysia;Active;Anime;comic-fiesta-2018</textarea>
+						</div>
+						<div class="col-md-12">
+								<div class="output"></div>
+						</div>
+						<div class="col-md-12"></div>
+				</div>
+		</div>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
