@@ -102,19 +102,11 @@ License URI: http://www.themevault.net/license/-->
             </section>
             <div class="clearfix"></div>-->
 <!--  <p id="mytab1">hi</p>-->
-<!DOCTYPE html>
-<html lang="en" >
 
-<head>
-  <meta charset="UTF-8">
-  <title>CSV to HTML table</title>
-  
-  
-  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+
+
 
       <style>
-      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700|Open+Sans:400,800);
 
 textarea {
 	display: none;
@@ -124,12 +116,9 @@ textarea {
 }
     </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-</head>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>-->
 
 <body>
-
   <div class="container" ng-app="myApp" ng-controller="Example">
 		<div class="container">
 				<div class="row">
@@ -387,7 +376,7 @@ December 22-23, 2018;Comic Fiesta 2018;Kuala Lumpur, Malaysia;Anime;Active
 </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-  
+
 
     <script  src="js/index.js"></script>
 
@@ -396,111 +385,7 @@ December 22-23, 2018;Comic Fiesta 2018;Kuala Lumpur, Malaysia;Anime;Active
 
 </body>
 
-</html>
 
-            <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-<script language="javascript" type="text/javascript">
- str = ""
-//function reqListener () {
-//  console.log(this.responseText);
-//  document.getElementById("mytab1").innerHTML = this.responseText.slice(1,1000)
-//  str = this.responseText.slice(1,1000)
-//}
-//loadjson("https://cors.io/?http://animecons.com/events/map/ac-maps/map-upcoming.xml")
-//console.log(str);
-function xhrSuccess() {
-    this.callback.apply(this, this.arguments);
-}
-
-function xhrError() {
-    console.error(this.statusText);
-}
-
-function loadFile(url, callback /*, opt_arg1, opt_arg2, ... */) {
-    var xhr = new XMLHttpRequest();
-    xhr.callback = callback;
-    xhr.arguments = Array.prototype.slice.call(arguments, 2);
-    xhr.onload = xhrSuccess;
-    xhr.onerror = xhrError;
-    xhr.open("GET", url, true);
-    xhr.send(null);
-}
-function showMessage(message) {
-    console.log(message + this.responseText);
-}
-
-loadFile("https://cors.io/?http://animecons.com/events/map/ac-maps/map-upcoming.xml", showMessage, "New message!\n\n");
-
-function loadjson(url){
-  var oReq = new XMLHttpRequest();
-  oReq.onreadystatechange=function() {
-    if (this.readyState == 4 && this.status == 200){
-      //alert(this.responseText);
-      //return JSON.parse(this.ResponseText);
-      console.log(this.responseText);
-      //var str = this.responseText;
-      //return str;
-      //document.write("<p>"+this.responseText+"</p>");
-    }
-  }
-  //return oReq.responseText;
-  //oReq.addEventListener("load", reqListener);
-  oReq.open("GET", url);
-  oReq.send();
-}
-
-
-
-var myArray    = [1,2,3,4,5,6,7,8]
-var names = ["Mark", "Jacob", "Larry"]
-var names = [str, str, str]
-var last = ["Otto", "Thornton", "the Bird"]
-var handle = ["@mdo", "@fat", "@twitter"]
-    var myTable= "<table class='table table-striped'>";
-    myTable+= "<thead><tr><th scope='col'>#</th><th scope='col'>First</th><th scope='col'>Last</th><th scope='col'>Handle</th></tr></thead><tbody>";
-  for (var i=0; i<3; i++) {
-    myTable+="<tr><th scope='row'>"+ (i+1) + "</th>";
-    myTable+="<td>" + names[i] + "</td>";
-    myTable+="<td>" + last[i] + "</td>";
-    myTable+="<td>" + handle[i] + "</td>";
-  }
-  myTable+="</tr></tbody>";
-   myTable+="</table>";
-
- document.write(myTable);
- document.write("<p>"+str+"</p>");
-
-//-->
-</script>
 
 <!--
             <section class="about-block">
@@ -530,21 +415,21 @@ var handle = ["@mdo", "@fat", "@twitter"]
             <footer>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3 col-sm-6 col-xs-12 width-set-50">
+                        <div class="col-md-3 col-sm-6 col-xs-12 width-set-100">
                             <div class="footer-details">
                                 <h4>Get in touch</h4>
                                 <ul class="list-unstyled footer-contact-list">
                                     <li>
                                         <i class="fa fa-map-marker fa-lg"></i>
-                                        <p>701 Old York Drive Richmond USA.</p>
+                                        <p>1066 Trojan Ave San Leandro, CA</p>
                                     </li>
                                     <li>
                                         <i class="fa fa-phone fa-lg"></i>
-                                        <p><a href="tel:+1-202-555-0100"> +1-202-555-0100</a></p>
+                                        <p><a href="tel: 408-805-2688"> 408-805-2688</a></p>
                                     </li>
                                     <li>
                                         <i class="fa fa-envelope-o fa-lg"></i>
-                                        <p><a href="mailto:demo@info.com"> demo@info.com</a></p>
+                                        <p><a href="mailto:tomodachiconventions@gmail.com"> tomodachiconventions@gmail.com</a></p>
                                     </li>
                                 </ul>
                                 <div class="footer-social-icon">
@@ -567,18 +452,18 @@ var handle = ["@mdo", "@fat", "@twitter"]
                                 <h4>explore</h4>
                                 <ul class="list-unstyled footer-links">
                                     <li><a href="index.html">Home</a></li>
-                                    <li class="active"><a>About</a></li>
-                                    <li><a href="rooms.html">Rooms</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="#">Dinning</a></li>
-                                    <li> <a href="news.html">News</a></li>
+                                    <li class="active"><a>Conventions</a></li>
+                                    <li><a href="rooms.html">Map</a></li>
+                                    <li><a href="gallery.html">Chat</a></li>
+                                    <li><a href="#">MegaChat</a></li>
+                                    <li> <a href="news.html">Connect</a></li>
                                     <li> <a href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="footer-details">
-                                <h4>Now On Instagram</h4>
+                                <h4>Coming Soon: Mobile Applications</h4>
                                 <div class="row">
                                     <div class="instagram-images">
                                         <div id="instafeed"></div>
@@ -589,7 +474,7 @@ var handle = ["@mdo", "@fat", "@twitter"]
                     </div>
 
                     <div class="copyright">
-                        &copy; 2017 All right reserved. Designed by <a href="http://www.themevault.net/" target="_blank">ThemeVault.</a>
+                        &copy; 2017 All right reserved.
                     </div>
 
                 </div>
