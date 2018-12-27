@@ -1,5 +1,4 @@
-<?php include("gauth.php"); //include auth.php file on all secure pages ?>
-
+<?php include("auth.php"); //include auth.php file on all secure pages ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,8 +52,8 @@
                         <div class="row">
                             <div class="col-md-2 col-sm-6 col-xs-6">
                                 <div id="logo">
-                                    <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                                    <a href="index.html"><span>Tomo</span>dachi</a>
+                                    <!--<a href="index.php"><img src="images/logo.png" alt="logo"></a>-->
+                                    <a href="index.php"><span>Tomo</span>dachi</a>
                                 </div>
                             </div>
                             <div class="col-sm-6 visible-sm">
@@ -74,19 +73,24 @@
                                     <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                         <ul class="list-unstyled nav1 cl-effect-10">
                                             <li><a  data-hover="Home" class="active"><span>Home</span></a></li>
-                                            <li><a data-hover="Conventions"  href="about.html"><span>Conventions</span></a></li>
-                                            <li><a data-hover="Map"  href="rooms.html"><span>Map</span></a></li>
-                                            <li><a data-hover="Chat"  href="gallery.html"><span>Chat</span></a></li>
-                                            <li><a data-hover="MegaChat" href="dinning.html"><span>MegaChat</span></a></li>
-                                            <li><a data-hover="Connect" href="news.html"><span>Connect</span></a></li>
-                                            <li><a data-hover="Contact Us" href="contact.html"><span>Contact Us</span></a></li>
+                                            <li><a data-hover="Conventions"  href="about.php"><span>Conventions</span></a></li>
+                                            <li><a data-hover="Map"  href="rooms.php"><span>Map</span></a></li>
+                                            <li><a data-hover="Chat"  href="gallery.php"><span>Chat</span></a></li>
+                                            <li><a data-hover="MegaChat" href="dinning.php"><span>MegaChat</span></a></li>
+                                            <li><a data-hover="Connect" href="news.php"><span>Connect</span></a></li>
+                                            <li><a data-hover="Contact Us" href="contact.php"><span>Contact Us</span></a></li>
                                         </ul>
 
                                     </div>
                                 </nav>
                             </div>
                             <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                                <div class="text-right"><button type="button" class="book-now-btn"><a href="login.php" style="color:#FFFFFF";>Log in</a></button></div>
+                                <div class="text-right"><p style="display:inline"><p>
+<?php if(!isset($_SESSION["username"])) { echo "Log in"; } else { echo "Logged in as " . $_SESSION['username']; } ?>
+<button type="button" class="book-now-btn"><a href="logout.php" style="color:#FFFFFF">
+<?php if(!isset($_SESSION["username"])) { echo "Log in"; } else { echo "Log out"; } ?></a></button></p>
+</div>
+
                             </div>
                         </div>
                     </div>
@@ -244,7 +248,7 @@
                                 <div class="product-desc-side">
                                     <h3><a>Conventions</a></h3>
                                     <p>View all-in-one list of conventions worldwide. Trust our up-to-date and verified with other sources list!</p>
-                                    <div class="links"><a href="about.html">Read more</a></div>
+                                    <div class="links"><a href="about.php">Read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +265,7 @@
                                 <div class="product-desc-side">
                                     <h3><a>Worldwide Map</a></h3>
                                     <p>With easy-to-see world map, see if there are any cons near you!</p>
-                                    <div class="links"><a href="rooms.html">Read more</a></div>
+                                    <div class="links"><a href="rooms.php">Read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -271,7 +275,7 @@
                                 <div class="product-desc-side">
                                     <h3><a>Chat with friends</a></h3>
                                     <p>You can form groups and plan with them! Send private messages to users!</p>
-                                    <div class="links"><a href="single-blog.html">Read more</a></div>
+                                    <div class="links"><a href="single-blog.php">Read more</a></div>
                                 </div>
                             </div>
 
@@ -289,7 +293,7 @@
                                 <div class="product-desc-side">
                                     <h3><a>Join community</a></h3>
                                     <p>Join the community chat for each convention to see what others are up to!</p>
-                                    <div class="links"><a href="single-blog.html">Read more</a></div>
+                                    <div class="links"><a href="single-blog.php">Read more</a></div>
                                 </div>
                             </div>
 
@@ -387,11 +391,11 @@
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 side-in-image">
                                 <div class="event-blog-details">
-                                    <h4><a href="single-blog.html">Lorem ipsum dolor sit amet</a></h4>
+                                    <h4><a href="single-blog.php">Lorem ipsum dolor sit amet</a></h4>
                                     <h5>Post By Admin <a><i aria-hidden="true" class="fa fa-heart-o fa-lg"></i>Likes</a><a><i aria-hidden="true" class="fa fa-comment-o fa-lg"></i>comments</a></h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lorem nulla, ornare eu felis quis, efficitur posuere nulla. Aliquam ac luctus turpis, non faucibus sem. Fusce ornare turpis neque, eu commodo sapien porta sed. Nam ut ante turpis. Nam arcu odio, scelerisque a vehicula vitae, auctor sit amet lectus. </p>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lorem nulla, ornare eu felis quis, efficitur posuere nulla. Aliquam ac luctus turpis, non faucibus sem. Fusce ornard hendrerit tortor vulputate id. Vestibulum mauris nibh, luctus non maximus vitae, porttitor eget neque. Donec tristique nunc facilisis, dapibus libero ac</p>
-                                    <a class="btn btn-default" href="single-blog.html">Read More</a>
+                                    <a class="btn btn-default" href="single-blog.php">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -405,11 +409,11 @@
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 side-in-image">
                                 <div class="event-blog-details">
-                                    <h4><a href="single-blog.html">Lorem ipsum dolor sit amet</a></h4>
+                                    <h4><a href="single-blog.php">Lorem ipsum dolor sit amet</a></h4>
                                     <h5>Post By Admin <a><i aria-hidden="true" class="fa fa-heart-o fa-lg"></i>Likes</a><a><i aria-hidden="true" class="fa fa-comment-o fa-lg"></i>comments</a></h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lorem nulla, ornare eu felis quis, efficitur posuere nulla. Aliquam ac luctus turpis, non faucibus sem. Fusce ornare turpis neque, eu commodo sapien porta sed. Nam ut ante turpis. Nam arcu odio, scelerisque a vehicula vitae, auctor sit amet lectus. </p>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lorem nulla, ornare eu felis quis, efficitur posuere nulla. Aliquam ac luctus turpis, non faucibus sem. Fusce ornard hendrerit tortor vulputate id. Vestibulum mauris nibh, luctus non maximus vitae, porttitor eget neque. Donec tristique nunc facilisis, dapibus libero ac</p>
-                                    <a class="btn btn-default" href="single-blog.html">Read More</a>
+                                    <a class="btn btn-default" href="single-blog.php">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -458,12 +462,12 @@
                                 <h4>explore</h4>
                                 <ul class="list-unstyled footer-links">
                                     <li class="active"><a>Home</a></li>
-                                    <li><a href="about.html">Conventions</a></li>
-                                    <li><a href="rooms.html">Map</a></li>
-                                    <li><a href="gallery.html">Chat</a></li>
+                                    <li><a href="about.php">Conventions</a></li>
+                                    <li><a href="rooms.php">Map</a></li>
+                                    <li><a href="gallery.php">Chat</a></li>
                                     <li><a href="#">MegaChat</a></li>
-                                    <li> <a href="news.html">Connect</a></li>
-                                    <li> <a href="contact.html">Contact</a></li>
+                                    <li> <a href="news.php">Connect</a></li>
+                                    <li> <a href="contact.php">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
