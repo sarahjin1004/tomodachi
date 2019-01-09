@@ -1,3 +1,4 @@
+<?php include("auth.php"); //include auth.php file on all secure pages ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,8 +49,8 @@
                         <div class="row">
                             <div class="col-md-2 col-sm-6 col-xs-6">
                                 <div id="logo">
-                                    <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                                    <a href="index.html"><span>Tomo</span>dachi</a>
+                                    <!--<a href="index.php"><img src="images/logo.png" alt="logo"></a>-->
+                                    <a href="index.php"><span>Tomo</span>dachi</a>
                                 </div>
                             </div>
                             <div class="col-sm-6 visible-sm">
@@ -68,19 +69,25 @@
                                     </div>
                                     <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                         <ul class="list-unstyled nav1 cl-effect-10">
-                                            <li><a data-hover="Home" href="index.html"><span>Home</span></a></li>
-                                            <li><a data-hover="Conventions"  href="about.html"><span>Conventions</span></a></li>
-                                            <li><a data-hover="Map"  href="rooms.html"><span>Map</span></a></li>
+                                            <li><a data-hover="Home" href="index.php"><span>Home</span></a></li>
+                                            <li><a data-hover="Conventions"  href="about.php"><span>Conventions</span></a></li>
+                                            <li><a data-hover="Map"  href="rooms.php"><span>Map</span></a></li>
                                             <li><a data-hover="Chat"  class="active"><span>Chat</span></a></li>
-                                            <li><a data-hover="MegaChat" href="dinning.html"><span>MegaChat</span></a></li>
-                                            <li><a data-hover="Connect" href="news.html"><span>Connect</span></a></li>
-                                            <li><a data-hover="Contact Us" href="contact.html"><span>Contact Us</span></a></li>
+                                            <li><a data-hover="MegaChat" href="dinning.php"><span>MegaChat</span></a></li>
+                                            <li><a data-hover="Connect" href="news.php"><span>Connect</span></a></li>
+                                            <li><a data-hover="Contact Us" href="contact.php"><span>Contact Us</span></a></li>
                                         </ul>
                                     </div>
                                 </nav>
                             </div>
                             <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                                <div class="text-right"><button type="button" class="book-now-btn">Log In</button></div>
+<!--                                <div class="text-right"><button type="button" class="book-now-btn">Log In</button></div>-->
+                                <div class="text-right"><p style="display:inline"><p>
+<?php if(!isset($_SESSION["username"])) { echo "Log in"; } else { echo "Logged in as " . $_SESSION['username']; } ?>
+<button type="button" class="book-now-btn"><a href="logout.php" style="color:#FFFFFF">
+<?php if(!isset($_SESSION["username"])) { echo "Log in"; } else { echo "Log out"; } ?></a></button></p>
+</div>
+
                             </div>
                         </div>
                     </div>
@@ -167,13 +174,13 @@
                             <div class="footer-details">
                                 <h4>explore</h4>
                                 <ul class="list-unstyled footer-links">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">Conventions</a></li>
-                                    <li><a href="rooms.html">Map</a></li>
+                                    <li><a href="index.php">Home</a></li>
+                                    <li><a href="about.php">Conventions</a></li>
+                                    <li><a href="rooms.php">Map</a></li>
                                     <li class="active"><a>Chat</a></li>
                                     <li><a href="#">MegaChat</a></li>
-                                    <li> <a href="news.html">Connect</a></li>
-                                    <li> <a href="contact.html">Contact</a></li>
+                                    <li> <a href="news.php">Connect</a></li>
+                                    <li> <a href="contact.php">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
