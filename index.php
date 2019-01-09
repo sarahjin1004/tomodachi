@@ -86,9 +86,9 @@
                             </div>
                             <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
                                 <div class="text-right"><p style="display:inline"><p>
-<?php if(!isset($_SESSION["username"])) { echo "Log in"; } else { echo "Logged in as " . $_SESSION['username']; } ?>
+<?php if(!isset($_SESSION["name"])) { echo "Log in"; } else { echo "Logged in as " . $_SESSION['name']; } ?>
 <button type="button" class="book-now-btn"><a href="logout.php" style="color:#FFFFFF">
-<?php if(!isset($_SESSION["username"])) { echo "Log in"; } else { echo "Log out"; } ?></a></button></p>
+<?php if(!isset($_SESSION["name"])) { echo "Log in"; } else { echo "Log out"; } ?></a></button></p>
 </div>
 
                             </div>

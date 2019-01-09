@@ -108,7 +108,7 @@
 
 
 
-
+<center><iframe src="https://cl2.widgetbot.io/channels/532484663264935969/532484663264935971" height="600" width="1200"></iframe></center>
 <!--
             <section class="about-block">
                 <div class="container">
