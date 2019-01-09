@@ -1,3 +1,5 @@
+<?php include("auth.php"); //include auth.php file on all secure pages ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -80,8 +82,13 @@
                                 </nav>
                             </div>
                             <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                                <div class="text-right"><button type="button" class="book-now-btn"><a href="login.php" style="color:#FFFFFF";>Log in</a></button></div>
-                            </div>
+                          <!--      <div class="text-right"><button type="button" class="book-now-btn"><a href="login.php" style="color:#FFFFFF";>Log in</a></button></div> -->
+                          
+                                <div class="text-right"><p>
+<?php if(!isset($_SESSION["username"])) { echo "Log in"; } else { echo "Logged in as " . $_SESSION['username']; } ?></p>
+<button type="button" class="book-now-btn"><a href="logout.php" style="color:#FFFFFF">
+<?php if(!isset($_SESSION["username"])) { echo "Log in"; } else { echo "Log out"; } ?></a></button>
+</div>
                         </div>
                     </div>
                 </div>
