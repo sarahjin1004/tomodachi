@@ -8,7 +8,7 @@ Author: Sajibe kanti
 <head>
 <meta charset="utf-8">
 <title>Login</title>
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="login/css/style.css" />
 </head>
 <body>
 <?php
@@ -28,7 +28,7 @@ Author: Sajibe kanti
 		$rows = mysql_num_rows($result);
         if($rows==1){
 			$_SESSION['username'] = $username;
-			header("Location: /"); // Redirect user to index.php
+			header("Location: index.php"); // Redirect user to index.php
             }else{
 				echo "<div class='form'><h3>Username/password is incorrect.</h3><br/>Click here to <a href='login.php'>Login</a></div>";
 				}
